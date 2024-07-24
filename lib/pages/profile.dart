@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basic/widgets/base/profile/profiledata.dart';
 import 'package:flutter_basic/widgets/navigate/drawer.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -15,57 +17,27 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         title: const Text("Profile"),
         centerTitle: true,
+        leading: null,
+        actions: [
+          Builder(builder: (context) {
+            return IconButton(
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              icon: const Icon(
+                FontAwesomeIcons.ellipsisVertical,
+              ),
+            );
+          })
+        ],
+        automaticallyImplyLeading: false,
       ),
       drawer: const BasicDrawer(),
       body: const SingleChildScrollView(
         child: Column(
-          children: [ProfileData()],
-        ),
-      ),
-    );
-  }
-}
-
-class ProfileData extends StatefulWidget {
-  const ProfileData({super.key});
-
-  @override
-  State<ProfileData> createState() => _ProfileDataState();
-}
-
-class _ProfileDataState extends State<ProfileData> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: 10,
-      ),
-      child: const Column(
-        children: [ProfileImage()],
-      ),
-    );
-  }
-}
-
-class ProfileImage extends StatefulWidget {
-  const ProfileImage({super.key});
-
-  @override
-  State<ProfileImage> createState() => _ProfileImageState();
-}
-
-class _ProfileImageState extends State<ProfileImage> {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      // padding: const EdgeInsets.all(10),
-      child: ClipOval(
-        // borderRadius: BorderRadius.circular(20),
-        child: Image.network(
-          'https://shorturl.at/cLfo7',
-          width: 175,
-          height: 175,
-          fit: BoxFit.cover,
+          children: [
+            ProfileData(),
+          ],
         ),
       ),
     );
