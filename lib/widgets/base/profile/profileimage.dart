@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class ProfileImage extends StatefulWidget {
   const ProfileImage({super.key});
 
@@ -15,8 +14,8 @@ class _ProfileImageState extends State<ProfileImage> {
       // padding: const EdgeInsets.all(10),
       child: ClipOval(
         // borderRadius: BorderRadius.circular(20),
-        child: Image.network(
-          'https://shorturl.at/cLfo7',
+        child: Image.asset(
+          'images/profile.jpg',
           width: 175,
           height: 175,
           fit: BoxFit.cover,
